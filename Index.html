@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spudshed Bill</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f9;
+      padding: 50px;
+    }
+    .hidden { display: none; }
+    button, select {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 40px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>View your Spudshed Bill</h1>
+  <button id="viewBtn">Click here</button>
+
+  <div id="confirmDiv" class="hidden">
+    <p>Do you really want to view the bill?</p>
+    <button id="confirmYes">Yes</button>
+    <button onclick="location.reload()">No</button>
+  </div>
+
+  <div id="reviewDiv" class="hidden">
+    <p>Review and Analyzing your Bill.................................</p>
+  </div>
+
+  <div id="paymentDiv" class="hidden">
+    <p>Please select your mode of payment for Spudshed bill:</p>
+    <select id="paymentSelect">
+      <option value="">-- Select an option --</option>
+      <option value="1">Keep your lotus feet on my head</option>
+      <option value="2">Forever serving your lotus feet</option>
+      <option value="3">Lifetime serving you of all the day and all the time</option>
+      <option value="4">Provide your causeless mercy</option>
+      <option value="5">All the above</option>
+    </select>
+  </div>
+
+  <div id="resultDiv" class="hidden message"></div>
+
+  <script>
+    const viewBtn = document.getElementById('viewBtn');
+    const confirmDiv = document.getElementById('confirmDiv');
+    const confirmYes = document.getElementById('confirmYes');
+    const reviewDiv = document.getElementById('reviewDiv');
+    const paymentDiv = document.getElementById('paymentDiv');
+    const paymentSelect = document.getElementById('paymentSelect');
+    const resultDiv = document.getElementById('resultDiv');
+
+    viewBtn.addEventListener('click', () => {
+      viewBtn.classList.add('hidden');
+      confirmDiv.classList.remove('hidden');
+    });
+
+    confirmYes.addEventListener('click', () => {
+      confirmDiv.classList.add('hidden');
+      reviewDiv.classList.remove('hidden');
+      setTimeout(() => {
+        reviewDiv.classList.add('hidden');
+        paymentDiv.classList.remove('hidden');
+      }, 5000); // 5 seconds delay
+    });
+
+    paymentSelect.addEventListener('change', () => {
+      let msg = '';
+      switch(paymentSelect.value) {
+        case '1':
+          msg = "Thank you for delivering me from this material world My Goswami";
+          break;
+        case '2':
+          msg = "Thank you for selecting this servant to serve you Maa Kaatyayini";
+          break;
+        case '3':
+          msg = "Thank you. Will be your forever DAS in serving you, Krishna Bhaktar";
+          break;
+        case '4':
+          msg = "Thank you for showering your mercy on this fallen soul, Vaishnavi";
+          break;
+        case '5':
+          msg = "Greater than Thank you. Words are not enough to describe and this DAS will be serving you forever";
+          break;
+      }
+      if (msg) {
+        resultDiv.textContent = msg;
+        resultDiv.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
